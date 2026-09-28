@@ -1,0 +1,6 @@
+{
+  "name": "RTC LiveTrack - Real-Time Bus Tracking & Transit Platform",
+  "description": "Real-time RTC bus tracking platform with live GPS bus locations, route explorer, bus stop arrivals, ETA predictions, and fleet monitoring.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

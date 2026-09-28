@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Compass, MapPin, Bookmark, Settings } from 'lucide-react';
+import { Home, Compass, MapPin, Bookmark, Bot } from 'lucide-react';
 
 interface MobileNavProps {
   currentTab: string;
@@ -10,9 +10,9 @@ export const MobileNav: React.FC<MobileNavProps> = ({ currentTab, onTabChange })
   const tabs = [
     { id: 'home', label: 'Home', icon: Home },
     { id: 'track', label: 'Live Track', icon: Compass },
+    { id: 'ai-agent', label: 'AI Agent', icon: Bot },
     { id: 'routes', label: 'Routes', icon: MapPin },
     { id: 'favorites', label: 'Saved', icon: Bookmark },
-    { id: 'admin', label: 'Admin', icon: Settings },
   ];
 
   return (

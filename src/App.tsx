@@ -17,9 +17,11 @@ import { FavoritesPage } from './components/favorites/FavoritesPage';
 import { AdminDashboard } from './components/admin/AdminDashboard';
 import { HelpCenterPage } from './components/help/HelpCenterPage';
 import { AboutPage } from './components/about/AboutPage';
+import { AgentChatboard } from './components/chat/AgentChatboard';
 import { NotificationDrawer } from './components/notifications/NotificationDrawer';
 import { ProfileModal } from './components/profile/ProfileModal';
 import { AuthModal } from './components/auth/AuthModal';
+import { Bot, Sparkles } from 'lucide-react';
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<string>('home');
@@ -198,10 +200,41 @@ export default function App() {
           />
         )}
 
+        {currentTab === 'ai-agent' && (
+          <AgentChatboard
+            buses={buses}
+            routes={routes}
+            stops={stops}
+            alerts={alerts}
+            onSelectBus={handleSelectBus}
+            onNavigateToTab={(tab) => {
+              setCurrentTab(tab);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            isDarkMode={isDarkMode}
+          />
+        )}
+
         {currentTab === 'help' && <HelpCenterPage />}
 
         {currentTab === 'about' && <AboutPage />}
       </main>
+
+      {/* Floating AI Agent Trigger Button (when not on ai-agent tab) */}
+      {currentTab !== 'ai-agent' && (
+        <button
+          onClick={() => {
+            setCurrentTab('ai-agent');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          className="fixed bottom-20 lg:bottom-6 right-5 z-40 flex items-center gap-2 rounded-full bg-blue-600 px-4 py-3 text-xs font-bold text-white shadow-xl shadow-blue-600/30 hover:bg-blue-700 hover:scale-105 active:scale-95 transition-all"
+          title="Open AI Transit Chatboard & Agent Trainer"
+        >
+          <Bot className="h-4 w-4" />
+          <span className="hidden sm:inline">Ask AI Transit Agent</span>
+          <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+        </button>
+      )}
 
       {/* Footer */}
       <Footer
